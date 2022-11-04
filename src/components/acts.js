@@ -7,8 +7,7 @@ import { connectAPI } from '../connection/connectAPI';
 import { FloatingLabel } from 'react-bootstrap';
 
 import { BsDashCircle, BsPlusCircle} from "react-icons/bs";
-import { UpdateAct } from './updateActs';
-import { BtnUpd } from './layouts/btnUpd';
+
 
 const Act = ()=>{
     const [show, setShow] = useState(false);
