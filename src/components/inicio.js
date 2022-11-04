@@ -28,6 +28,7 @@ const Inicio = ()=>{
                                     <p>Back: SpringBoot</p>
                                     <p>DB: Heroku - Postgres</p>
                                 </Card.Text>
+                                
                             </Card.Body>
                         </Card>
                     </Col>
