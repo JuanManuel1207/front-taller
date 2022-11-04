@@ -26,7 +26,7 @@ const Inicio = ()=>{
                                 <Card.Text>
                                     <p>Front: React</p>
                                     <p>Back: SpringBoot</p>
-                                    <p>DB: Postgresql -  Supabase</p>
+                                    <p>DB: Heroku - Postgres</p>
                                 </Card.Text>
                             </Card.Body>
                         </Card>
