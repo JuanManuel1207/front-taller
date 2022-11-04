@@ -6,7 +6,9 @@ import Form from 'react-bootstrap/Form';
 import { connectAPI } from '../connection/connectAPI';
 import { FloatingLabel } from 'react-bootstrap';
 
-import { BsDashCircle, BsFillGearFill, BsPlusCircle} from "react-icons/bs";
+import { BsDashCircle, BsPlusCircle} from "react-icons/bs";
+import { UpdateAct } from './updateActs';
+import { BtnUpd } from './layouts/btnUpd';
 
 const Act = ()=>{
     const [show, setShow] = useState(false);
@@ -117,7 +119,7 @@ const Act = ()=>{
                                 <td>{act.description}</td>
                                 <td>{act.meet.id} | {act.meet.affair}</td>
                                 <td>
-                                    {delAct(act.id)}  
+                                    {delAct(act.id)}
                                 </td>
                             </tr>
                         ))}

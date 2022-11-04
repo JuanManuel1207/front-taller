@@ -4,8 +4,10 @@ import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import Form from 'react-bootstrap/Form';
 import { connectAPI } from '../connection/connectAPI';
-import { BsDashCircle, BsFillGearFill, BsPlusCircle} from "react-icons/bs";
+import { BsDashCircle, BsPlusCircle} from "react-icons/bs";
 
+import { BtnUpd } from './layouts/btnUpd';
+import { UpdateMeet } from './updateMeets';
 
 const Meet = ()=>{
     const [show, setShow] = useState(false);
@@ -124,7 +126,7 @@ const Meet = ()=>{
                                 <td>{meet.dateMeet}</td>
                                 <td>{meet.room.id} | {meet.room.description}</td>
                                 <td>
-                                    {delMeet(meet.id)}
+                                    {delMeet(meet.id)} | <BtnUpd dataUpdate={<UpdateMeet id={meet.id} infoAffair={meet.affair} infoDateMeet={meet.dateMeet} infoRoom={meet.room.id} />} title="Update Meet"/>
                                 </td>
                             </tr>
                         ))}
