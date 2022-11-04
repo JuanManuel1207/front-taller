@@ -4,7 +4,9 @@ import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import Form from 'react-bootstrap/Form';
 import { connectAPI } from '../connection/connectAPI';
-import { BsDashCircle, BsFillGearFill, BsPlusCircle} from "react-icons/bs";
+import { BsDashCircle, BsPlusCircle} from "react-icons/bs";
+import { BtnUpd } from './layouts/btnUpd';
+import { UpdateRoom } from './updateRooms';
 
 
 const Room = ()=>{
@@ -12,34 +14,10 @@ const Room = ()=>{
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
 
-    
-    const [showUpd, setShowUpd] = useState(false);
-    const handleCloseUpd = () => setShowUpd(false);
-    const handleShowUpd = () => setShowUpd(true);
 
     const [capacity, setCapacity] = useState('');
     const [description, setDescription] = useState(''); 
     const [roomData, setRoomData] = useState([]);
-    const [oneRoom, setOneRoom] = useState('');
-    const [idRoomUpd, setidRoomUpd] = useState('');
-
-    function modalEditar(id){
-        setidRoomUpd(id);
-        updModal();
-        setShowUpd(true);
-    }
-
-    function updModal(){
-        connectAPI
-        .get(`/rooms/${idRoomUpd}`)
-        .then((response) => {
-            if (response.data != '') {
-                setOneRoom(response.data)
-            }else{
-                alert('Algo salio mal, intente de nuevo')                
-            }
-          })
-    }
 
     function addRoom(){
         connectAPI
@@ -119,35 +97,6 @@ const Room = ()=>{
                 </Form>
             </Modal>
 
-            <Modal
-                    show={showUpd}
-                    onHide={handleCloseUpd}
-                    backdrop="static"
-                    keyboard={false}
-                >
-            <Form>
-                    <Modal.Header closeButton>
-                        <Modal.Title>Upd Room</Modal.Title>
-                    </Modal.Header>
-                    <Modal.Body>
-                        <Form.Group className="mb-3" controlId="formBasicCapacity">
-                            <Form.Label>Capacity</Form.Label>
-                            <Form.Control type="number" placeholder="Enter capacity" min={0} value={oneRoom.capacity} /*onChange={(e)=>setCapacity(e.target.value)}*//>
-                        </Form.Group>
-                        <Form.Group className="mb-3" controlId="formBasicDescription">
-                            <Form.Label>Description</Form.Label>
-                            <Form.Control type="text" placeholder="Enter Description" value={oneRoom.description} onChange={(e)=>setDescription(e.target.value)}/>
-                        </Form.Group>
-                    </Modal.Body>
-                    <Modal.Footer>
-                        <Button variant="secondary" onClick={handleCloseUpd}>
-                            Cancel
-                        </Button>
-                        <Button variant="success" type='submit'>Save</Button>
-                    </Modal.Footer>
-                </Form>
-                </Modal>
-
             <div className='row'>
                 <Table striped bordered hover>
                     <thead>
@@ -165,7 +114,7 @@ const Room = ()=>{
                                 <td>{room.capacity}</td>
                                 <td>{room.description}</td>
                                 <td>
-                                    {delRoom(room.id)}
+                                    {delRoom(room.id)} | <BtnUpd dataUpdate={<UpdateRoom id={room.id} infoDescription={room.description} infoCapacity={room.capacity}/>} title="Update Room"/>
                                 </td>
                             </tr>
                         ))}
